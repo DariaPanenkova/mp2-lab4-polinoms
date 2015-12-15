@@ -9,7 +9,12 @@
 
 #include "monom.h"
 
-class POlinom
+//Monom - данные
+// звено списка Node = Monom + next
+
+// список целиком. Node* head; Node* tail// операции: вставка, удаление, поиск ....
+
+class Polinom
 {
 public:
 
