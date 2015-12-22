@@ -8,6 +8,7 @@
 #define _POLINOM__H_
 
 #include "monom.h"
+#include "list.h"
 
 //Monom - данные
 // звено списка Node = Monom + next
@@ -18,9 +19,7 @@ class Polinom
 {
 public:
 
-	Monom *Data;
-	Polinom *Next;
-	Polinom *Head;
+	List<Monom>* polinom;
 
 	Polinom();
 

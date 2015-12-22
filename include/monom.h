@@ -13,7 +13,7 @@ public:
 	double Coef;
 	int Deg;
 
-	Monom(double c, int d);
+	Monom(double c=0, int d=-1);
 	Monom(const Monom &mon);
 	
 	Monom& operator=(const Monom &mon);
