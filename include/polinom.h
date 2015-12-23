@@ -22,7 +22,10 @@ public:
 	List<Monom>* polinom;
 
 	Polinom();
+	
+	void AddMonom(Monom m);
 
+    Polinom operator+ (const Polinom& p);
 
 };
 #endif
