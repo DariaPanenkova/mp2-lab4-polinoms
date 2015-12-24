@@ -70,7 +70,14 @@ class List
 		tail = fhead;
 		size = 0;	
 	}
-
+	Node<T>* GetHead()
+	{
+		return head;
+	}
+	int GetSize()
+	{
+		return size;
+	}
 	void AddToHead(T d)
 	{
 		Node<T>*temp;

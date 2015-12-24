@@ -25,7 +25,10 @@ public:
 	
 	void AddMonom(Monom m);
 
+	Monom& operator[](int pos);
     Polinom operator+ (const Polinom& p);
+	Polinom  operator- (const Polinom& p);
+
 
 };
 #endif

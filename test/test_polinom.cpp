@@ -85,7 +85,52 @@ TEST(MONOM, can_multiply_monoms)
 	EXPECT_EQ(40,(m1*m2).GetCoef());
 
 }
+
 TEST(POLINOM, can_creat_polinom)
 {
 	ASSERT_NO_THROW(Polinom p);
+}
+
+TEST(POLINOM, can_add_polinoms)
+{
+	Polinom p1;
+
+	p1.AddMonom(Monom(1,1));
+	p1.AddMonom(Monom(3,4));
+
+	Polinom p2;
+
+	p2.AddMonom(Monom(4,1));
+	p2.AddMonom(Monom(2,3));
+
+	Polinom r;
+
+	r=p1+p2;
+
+	EXPECT_EQ(3,r[0].GetCoef());
+	EXPECT_EQ(2,r[1].GetCoef());
+	EXPECT_EQ(5,r[2].GetCoef());
+
+}
+
+TEST(POLINOM, can_sub_polinoms)
+{
+	Polinom p1;
+
+	p1.AddMonom(Monom(1,1));
+	p1.AddMonom(Monom(3,4));
+
+	Polinom p2;
+
+	p2.AddMonom(Monom(4,1));
+	p2.AddMonom(Monom(2,3));
+
+	Polinom r;
+
+	r=p1-p2;
+
+	EXPECT_EQ(3,r[0].GetCoef());
+	EXPECT_EQ(2,r[1].GetCoef());
+	EXPECT_EQ(-3,r[2].GetCoef());
+
 }
