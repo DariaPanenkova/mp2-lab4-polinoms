@@ -1,111 +1,38 @@
+// класс Полином - упорядоченный односвязный список Мономов
+// поддерживает операции Печать, Вставка монома, Удаление монома,  
+// Поиск монома, Сложение полиномов(слияние упорядоченных списков), 
+// Умножение полиномов
+
+
+#ifndef _POLINOM__H_
+#define _POLINOM__H_
+
 #include "monom.h"
+#include "list.h"
+#include <iostream>
+//Monom - данные
+// звено списка Node = Monom + next
 
-Monom::Monom(double c, int d)
+// список целиком. Node* head; Node* tail// операции: вставка, удаление, поиск ....
+
+class Polinom
 {
-	Coef=c;
-	Deg=d;
-}
+public:
 
-Monom::	Monom(const Monom &mon)
-{
-	Coef=mon.Coef;
-	Deg=mon.Deg;
-}
+	List<Monom>* polinom;
 
+	Polinom();
+	Polinom(const Polinom &pol);
+	void AddMonom(Monom m);
+	void DeleteMonom(Node<Monom> *m);
+	Monom& operator[](int pos);
+	Polinom operator = (const Polinom& p);
+    friend Polinom operator+ (const Polinom& l,const Polinom& p);
+	friend Polinom operator*( const Polinom& l,const Monom& r);
+	friend Polinom operator*(const Polinom& l,const Polinom& r);
+	friend Polinom  operator- (const Polinom& l,const Polinom& p);
+	void Reconstr();
+	void print();
 
-int Monom::GetDeg()
-{
-	return Deg;
-}
-
-void Monom::SetDeg(int d)
-{
-	Deg = d;
-}
-
-double Monom::GetCoef()
-{
-	return Coef;
-}
-
-void Monom::SetCoef(double c)
-{
-	Coef = c;
-}
-Monom& Monom:: operator=(const Monom &mon)
-{
-	if(this == &mon)
-		return *this;
-	Coef=mon.Coef;
-	Deg=mon.Deg;
-	return *this;
-} 
-
-bool Monom::operator==(const Monom &mon) const
-{
-	if(this == &mon)
-		return true;
-	else
-		if((Coef==mon.Coef)&&(Deg==mon.Deg))
-			return true;
-		else
-			return false;
-}
-
-bool Monom::operator!=(const Monom &mon) const
-{
-	return !(*this==mon);
-}
-
-bool Monom::operator>(const Monom& mon)
-{
-	if (Deg == mon.Deg)
-		if ( Coef > mon.Coef)
-			return true;
-	if( Deg > mon.Deg)
-		return true;
-	return false;
-}
-
-bool Monom::operator<(const Monom& mon)
-{
-	if (Deg == mon.Deg)
-		if ( Coef < mon.Coef)
-			return true;
-	if( Deg < mon.Deg)
-		return true;
-	return false;
-}
-
-Monom Monom::operator+(const Monom& mon)
-{
-	if( Deg != mon.Deg )
-		throw ("Рызные степени");
-	Monom res(0,Deg);
-
-	res.Coef= Coef + mon.Coef;
-	return res;
-}
-
-Monom Monom::operator-(const Monom& mon)
-{
-	if( Deg != mon.Deg )
-		throw ("Рызные степени");
-	Monom res(0,Deg);
-
-	res.Coef= Coef - mon.Coef;
-	return res;
-}
-
-
-Monom Monom::operator * (const Monom &mon)
-{
-	if( (Deg + mon.Deg)>999)
-		throw ("Некоректные степени");
-	Monom res;
-
-	res.Coef= Coef * mon.Coef;
-	res.Deg= Deg * mon.Deg;
-
-	return res;
-}
+};
+#endif
